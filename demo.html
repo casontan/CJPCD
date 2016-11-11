@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<link href="http://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style type="text/css">
+		.jumbotron{
+			margin-top: 20px;
+		}
+		#btn-group2,#row2{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+<div class="container">
+	<div class="jumbotron">
+    <h1>欢迎使用CJPCD！</h1>
+    <p>特点介绍:</p>
+    <p>1.纯Javascript编写</p>
+    <p>2.使用方便 <a class="btn btn-primary pull-right" role="button">
+    查看文档</a></p>
+    <p>
+    </p>
+  </div>
+	<div class="row">
+	  	<div class="col-md-4">
+	  		<div class="form-group">
+			    <label for="name">选择省份</label>
+			    <select id="province" class="form-control"></select>
+			  </div>
+	  	</div>
+	  	<div class="col-md-4">
+	  		<div class="form-group">
+			    <label for="name">选择城市</label>
+			    <select id="city" class="form-control"></select>
+			  </div>
+	  	</div>
+	  	<div class="col-md-4">
+	  		<div class="form-group">
+			    <label for="name">选择区</label>
+			    <select id="district" class="form-control"></select>
+			  </div>
+	  	</div>
+	</div>
+
+	<br />
+	<div class="btn-group">
+	    <button type="button" class="btn btn-default" id="setValue">设置值</button>
+	    <button type="button" class="btn btn-default" id="getValue">获取值</button>	        
+	    <button type="button" class="btn btn-default" id="resetValue">重置值</button>
+	    <button type="button" class="btn btn-primary" id="newcase">新实例</button>
+	    <div class="input-group" style="width: 200px">
+        <input type="text" class="form-control"  id="customChar" placeholder="请输入分割字符">
+        <span class="input-group-addon"  id="getCustomValue">获取值</span>
+
+      </div>
+	</div>
+	
+
+	<br />
+	<br />
+	<div class="row" id="row2">
+	  	<div class="col-md-4">
+	  		<div class="form-group">
+			    <label for="name">选择省份</label>
+			    <select id="province1" class="form-control"></select>
+			  </div>
+	  	</div>
+	  	<div class="col-md-4">
+	  		<div class="form-group">
+			    <label for="name">选择城市</label>
+			    <select id="city1" class="form-control"></select>
+			  </div>
+	  	</div>
+	  	<div class="col-md-4">
+	  		<div class="form-group">
+			    <label for="name">选择区</label>
+			    <select id="district1" class="form-control"></select>
+			  </div>
+	  	</div>
+  	</div>
+  	<div class="btn-group" id="btn-group2">
+	    <button type="button" class="btn btn-default" id="setValue1">设置值</button>
+	    <button type="button" class="btn btn-default" id="getValue1">获取值</button>	        
+	    <button type="button" class="btn btn-default" id="resetValue1">重置值</button>
+	    <div class="input-group" style="width: 200px">
+        <input type="text" class="form-control"  id="customChar1" placeholder="请输入分割字符">
+        <span class="input-group-addon"  id="getCustomValue1">获取值</span>
+      </div>
+	</div>
+ 
+	
+
+	
+
+	
+</div>
+<script type="text/javascript" src="./dist/cj-pcd-1.0.1.min.js"></script>
+<!-- <script type="text/javascript" src="./cj-pcd/cj-pcd-1.0.1.js"></script> -->
+	<script type="text/javascript">
+	
+
+		window.onload = function(){
+			var CJPCD1 = new CJPCD("province","city","district");
+
+			//设置值
+			document.getElementById('setValue').onclick=function(){				
+				CJPCD1.setUp("广东省","广州市","天河区");
+			}
+
+			//获取地址
+			document.getElementById('getValue').onclick=function(){
+				var value = CJPCD1.getValue();//json对象
+				console.log(value);
+				if(!value){ 
+					console.log("暂时未设置地址");
+					alert("暂时未设置地址");
+					return false;
+				}
+				alert(value.province +"," + value.city + "," + value.district)
+			}
+
+			//自定义分割结果
+			document.getElementById('getCustomValue').onclick=function(){
+				var customChar = document.getElementById('customChar').value;
+				console.log(CJPCD1.getValue(customChar))
+			}
+			//重置
+			document.getElementById('resetValue').onclick=function(){
+				CJPCD1.reSet();//重置
+			}
+			
+			document.getElementById('newcase').onclick=function(){
+				document.getElementById('btn-group2').style = "display:block";
+				document.getElementById('row2').style = "display:block";
+			}
+
+
+			//实例 2 
+			var CJPCD2 = new CJPCD("province1","city1","district1");
+			document.getElementById('setValue1').onclick=function(){
+				CJPCD2.setUp("广东省","广州市","越秀区"); }
+
+			//获取地址
+			document.getElementById('getValue1').onclick=function(){
+				var value = CJPCD2.getValue();//json对象
+				console.log(value);
+				if(!value){ 
+					console.log("暂时未设置地址");
+					alert("暂时未设置地址");
+					return false;
+				}
+				alert(value.province +"," + value.city + "," + value.district);
+			}
+			//自定义分割结果
+			document.getElementById('getCustomValue1').onclick=function(){
+				var customChar = document.getElementById('customChar1').value;
+				alert(CJPCD2.getValue(customChar))
+			}
+			//重置
+			document.getElementById('resetValue1').onclick=function(){
+				CJPCD2.reSet();
+			}
+		}
+	</script>
+</body>
+</html>

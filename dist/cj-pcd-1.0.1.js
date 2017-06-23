@@ -168,8 +168,9 @@
     };
 
     c.get_value = function(valueType){
-      if(!valueType)
-        valueType = 'json'
+      if(!valueType){
+        valueType = 'json';
+      }
 
       var province_val = c.province.options[c.province.selectedIndex].value;
       var city_val = c.city.options[c.city.selectedIndex].value;

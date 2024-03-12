@@ -2,6 +2,8 @@
 	
 CJPCD 是一款原生开源的 javascript 插件，用于生成省市区选择器，基本用法十分简单。
 
+最近又做了个原生的项目，用上了这个插件，依然好用，允许我自我陶醉一下。。。
+
 #### 使用方法
 
 最简单的使用只需要两个步骤：
@@ -22,7 +24,7 @@ CJPCD 是一款原生开源的 javascript 插件，用于生成省市区选择�
 
      效果如下图
 
-	![界面](./docs/001.png)
+	![界面](https://www.casontan.com/storage/editormd_imgs/6BCxaHFWHOkrR0MIHMBgCLh4zEV7VfmTxVENlkF3.png)
 
 #### API
 
@@ -85,4 +87,4 @@ CJPCD 是一款原生开源的 javascript 插件，用于生成省市区选择�
 	
 	使用案例如下:
 	
-	![使用案例](./docs/CJPCD.gif)
+	![使用案例](https://www.casontan.com/storage/editormd_imgs/0OpiqeL47ZzupQj40js9uam6NK5lgrQ7h9sCKIeh.gif)
